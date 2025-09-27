@@ -7,8 +7,8 @@ Obrigado por contribuir com a documentação do Diário de Enxaqueca! Este repos
 
 Clone o repositório localmente:
 ```bash
-git clone https://github.com/sua-org/diario-enxaqueca-documentacao.git
-cd diario-enxaqueca-documentacao
+git clone https://github.com/diario-enxaqueca/documentacao.git
+cd documentacao
 ```
 ####  Criar branch
 

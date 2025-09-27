@@ -94,11 +94,16 @@ Todos os arquivos e links estão organizados no repositório, facilitando a aval
 
 ## Contribuição
 
-1. Fork do repositório
-2. Criar branch (git checkout -b feature/nova-documentacao)
-3. Commit (git commit -m "Adiciona documentação da X")
-4. Push (git push origin feature/nova-documentacao)
-5. Abrir Pull Request
+Contribuições são bem-vindas! Para manter consistência e qualidade na documentação, siga as instruções detalhadas no arquivo [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Ele inclui orientações sobre:
+* Clonar o repositório
+* Criar branch a partir da `main`
+* Padrão de commits (**Conventional Commits**)
+* Abrir Pull Requests com descrição clara
+* Boas práticas de de **pastas**, **UML**, **backlog**, **regras de negócio** e **protótipo Figma**
+
+Obrigado por ajudar a manter a documentação do Diário de Enxaqueca clara e completa!
 
 ## Licença
 
