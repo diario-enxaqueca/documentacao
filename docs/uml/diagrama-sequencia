@@ -1,12 +1,12 @@
-# Diagrama de Sequência – Criar Entrada
+# Diagrama de Sequência – Registrar episódio de enxaqueca
 
-Este documento apresenta o **diagrama de sequência** do fluxo **Criar Entrada** no sistema **Diário de Enxaqueca**, detalhando a interação entre o cliente, API, controller, model e banco de dados.
+Este documento apresenta o **diagrama de sequência** do fluxo **Registrar episódio de enxaqueca** no sistema **Diário de Enxaqueca**, detalhando a interação entre o cliente, API, controller, model e banco de dados.
 
 ---
 
 ## Diagrama (ASCII)
 
-![Diagrama de Sequência](../assets/diagrama-sequencia-criar-entrada.png)
+![Diagrama de Sequência](../assets/diagrama-sequencia-criar-episodio.png)
 
 ---
 
@@ -14,7 +14,7 @@ Este documento apresenta o **diagrama de sequência** do fluxo **Criar Entrada**
 
 1. **Cliente**
 
-   * Envia uma requisição HTTP `POST /entrada` com os dados da nova entrada de enxaqueca.
+   * Envia uma requisição HTTP `POST /episodio` com os dados da nova episódio de enxaqueca.
 
 2. **API (FastAPI)**
 
@@ -32,7 +32,7 @@ Este documento apresenta o **diagrama de sequência** do fluxo **Criar Entrada**
 
 5. **Banco de Dados**
 
-   * Insere o registro na tabela correspondente (`entradas`).
+   * Insere o episódio na tabela correspondente (`e`).
 
 6. **Retorno**
 
@@ -46,6 +46,6 @@ Este documento apresenta o **diagrama de sequência** do fluxo **Criar Entrada**
 
 ### Observações
 
-* Este fluxo ilustra o **CRUD “Criar Entrada”**, mas a lógica é similar para **Editar**, **Visualizar** e **Deletar**.
+* Este fluxo ilustra o **CRUD “Registrar episódio de enxaqueca”**, mas a lógica é similar para **Editar**, **Visualizar** e **Deletar**.
 * Segue o padrão **MVC**, separando responsabilidades entre API, Controller e Model.
 * Serve como base para implementação de testes e documentação do backend.

@@ -19,7 +19,7 @@ git pull
 git checkout -b feature/nova-documentacao
 ```
 
-Use nomes descritivos, como `feature/uml-registro` ou `docs/backlog-mvp`.
+Use nomes descritivos, como `feature/uml-episodio` ou `docs/backlog-mvp`.
 
 ####  Fazer commits
 
@@ -37,7 +37,7 @@ Tipos comuns:
 
 Exemplo:
 ```bash
-git commit -m "docs(uml): adiciona diagrama de classes do CRUD de registros"
+git commit -m "docs(uml): adiciona diagrama de classes do CRUD de episodios"
 ```
 ####  Abrir Pull Request
 

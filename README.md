@@ -24,7 +24,7 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
 
 O MVP da primeira entrega contempla:
 
-* CRUD completo de registros de enxaqueca
+* CRUD completo de episódios de enxaqueca
 * Backend funcional com FastAPI + SQLAlchemy + MySQL
 * Frontend funcional com React.js + TypeScript
 * Protótipo de alta fidelidade no Figma
@@ -38,10 +38,10 @@ O MVP da primeira entrega contempla:
 | -- | --------------------------- | ----------------------------------------------------------- |
 | 1  | Cadastro de usuário         | E-mail único, senha segura                                  |
 | 2  | Login                       | Autenticação via JWT                                        |
-| 3  | Criar registro de enxaqueca | Campos: data, intensidade, gatilhos, medicação, observações |
-| 4  | Listar registros            | Apenas registros do usuário logado                          |
-| 5  | Atualizar registro          | Permitir edição de todos os campos                          |
-| 6  | Excluir registro            | Exclusão física                                             |
+| 3  | Criar episódio de enxaqueca | Campos: data, intensidade, gatilhos, medicação, observações |
+| 4  | Listar episódios            | Apenas episódios do usuário logado                          |
+| 5  | Atualizar episódio          | Permitir edição de todos os campos                          |
+| 6  | Excluir episódio            | Exclusão física                                             |
 | 7  | Documentação da API         | Swagger automático                                          |
 | 8  | Testes unitários            | Pytest para endpoints CRUD                                  |
 | 9  | Protótipo visual            | Alta fidelidade implementada fielmente                      |
@@ -54,7 +54,7 @@ Cada história de usuário é detalhada em documento individual dentro da pasta 
 Para a primeira entrega, foram criados os seguintes diagramas UML:
 
 * Diagrama de classes – Estrutura do backend e relações entre modelos
-* Diagrama de sequência – Fluxo do CRUD de registros de enxaqueca
+* Diagrama de sequência – Fluxo do CRUD de episódios de enxaqueca
 * Diagrama de casos de uso – Interações do usuário com o sistema
 
 Os arquivos estão disponíveis em `uml/` no formato PDF e PNG.

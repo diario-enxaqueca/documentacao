@@ -8,7 +8,7 @@
 
 1. **CRUD de Entradas de Enxaqueca**
 
-   * Criar, listar, visualizar, editar e deletar registros
+   * Criar, listar, visualizar, editar e deletar episódios de enxaqueca
    * Campos:
 
      * `data` (data do episódio)
