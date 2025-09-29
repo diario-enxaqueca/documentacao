@@ -15,4 +15,3 @@
 | 11 | Como administrador, quero editar usuários                                         | Alterar dados pessoais e senha                                                               |
 | 12 | Como administrador, quero deletar usuários                                        | Exclusão física, mantendo integridade das episódios relacionadas                              |
 
-episódio

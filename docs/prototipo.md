@@ -1,26 +1,26 @@
-# 📱 Protótipo – Diário de Enxaqueca
+# Protótipo – Diário de Enxaqueca
 
 O protótipo do **Diário de Enxaqueca** foi desenvolvido para validar a experiência do usuário, fluxos de navegação e consistência visual de acordo com o [Guia de Estilo](./guia-de-estilo.md).  
 
 ---
 
-## 🔗 Link para o Figma
+## Link para o Figma
 
 O protótipo interativo está disponível no Figma no link abaixo:  
 
-👉 [Abrir protótipo no Figma](https://www.figma.com/design/xoJ8FdBxirWbwV4XJlN4at/Di%C3%A1rio-de-enxaqueca?node-id=4-98&t=dGFHW5tJmNiVQfDV-1)
+[Abrir protótipo no Figma](https://www.figma.com/design/xoJ8FdBxirWbwV4XJlN4at/Di%C3%A1rio-de-enxaqueca?node-id=4-98&t=dGFHW5tJmNiVQfDV-1)
 
 ---
 
-## 📄 Versão em PDF
+## Versão em PDF
 
 Para referência offline, disponibilizamos também uma cópia do protótipo em formato PDF:  
 
-👉 [Baixar protótipo em PDF](./assets/prototipo.pdf)
+[Baixar protótipo em PDF](./assets/prototipo.pdf)
 
 ---
 
-## 🗂️ Estrutura do Protótipo
+## Estrutura do Protótipo
 
 O protótipo contempla as seguintes telas principais:
 
@@ -41,7 +41,7 @@ O protótipo contempla as seguintes telas principais:
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 O protótipo serve como guia para:  
 - Desenvolvimento das interfaces do **frontend**.  

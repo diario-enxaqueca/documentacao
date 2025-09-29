@@ -25,3 +25,4 @@ Abaixo está a representação visual do DDL:
 > - Cada **usuário** pode ter vários **episódios**.  
 > - Cada **episódio** pode estar relacionado a múltiplos **gatilhos** e múltiplas **medicações**.  
 > - A tabela **dashboard_cache** armazena estatísticas globais ou por usuário, dependendo do campo `usuario_id`.  
+>

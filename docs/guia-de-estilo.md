@@ -1,6 +1,6 @@
 # Guia de Estilo – Diário de Enxaqueca
 
-## 📌 Logo e Identidade Visual
+## Logo e Identidade Visual
 
 Logo oficial:  
 ![Logo do Diário de Enxaqueca](./assets/logo.png)
@@ -10,7 +10,7 @@ Logo oficial:
 
 ---
 
-## 🎨 Guia de estilo
+## Guia de estilo
 
 Logo oficial:  
 ![Logo do Diário de Enxaqueca](./assets/style-guide.png)
@@ -39,7 +39,7 @@ Rosa (#FF6F91) sobre branco (#FFFFFF) → contraste 4.9:1 (AA).
 
 ---
 
-###  🔤 Tipografia
+###  Tipografia
 
 Fonte primária: Inter (Google Fonts).
 
@@ -57,7 +57,7 @@ Legenda/Notas: 12px / 400.
 
 ---
 
-## 🖼️ Ícones Autoexplicativos
+## Ícones Autoexplicativos
 
 ➕ Add (Adicionar)
 
