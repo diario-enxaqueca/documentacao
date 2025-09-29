@@ -6,7 +6,7 @@ Este documento apresenta o **diagrama de classes** do projeto **Diário de Enxaq
 
 ## Diagrama
 
-![Diagrama de Classes](../assets/diagrama-classes.png)
+![Diagrama de Classes](../docs/assets/diagrama-classes.png)
 
 ---
 

@@ -12,36 +12,34 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
 
 A primeira entrega contempla:
 
-* Criação de comunidade no GitHub com três repositórios distintos: [documentacao](https://github.com/diario-enxaqueca/documentacao), [backend](https://github.com/diario-enxaqueca/backend), [frontend](https://github.com/diario-enxaqueca/frontend)
-* Backend funcional com FastAPI + SQLAlchemy + MySQL (para somente uma regra de negócio)
-* Frontend com React.js + TypeScript (apenas a criação do repositório separado)
-* Estrutura mínima de testes automatizados (apenas um teste skipado no backend)
-* Documentação clara em repositório separado 
-  * [Guia de estilo](./docs/guia-de-estilo.md) com logo, paleta de cores e ícones.
+* Criação de organização no GitHub com três repositórios distintos: 
+  * Documentacao - [link](https://github.com/diario-enxaqueca/documentacao)
+  * Backend - [link](https://github.com/diario-enxaqueca/backend)
+  * Frontend - [link](https://github.com/diario-enxaqueca/frontend)
+* Definição da arquitetura do backend
+  * Python/FastAPI
+  * ORM SQLAlchemy
+  * MySQL 
+* Implementação de apenas uma história de usuário no backend:
+  * HU escolhida: 1 - "Como usuário, quero criar um episódio de enxaqueca para acompanhar meus episódios"
+  * Os códigos se encontram no repositório backend na pasta [source/episodio](https://github.com/diario-enxaqueca/backend/tree/main/source/episodio) seguindo o modelo MVC - Model, View e Controller.
+* Ambiente do backend configurado:
+  * [Dockerfile](https://github.com/diario-enxaqueca/backend/blob/main/Dockerfile), 
+  * [docker-compose.yml](https://github.com/diario-enxaqueca/backend/blob/main/docker-compose.yml)
+  * Banco de dados dockerizado ([init-sql](https://github.com/diario-enxaqueca/backend/blob/main/mysql-init/init.sql))
+* Estrutura mínima de testes automatizados no backend:
+  * apenas um teste skipado: arquivo no repositório backend [source/episodio/teste_episodio.py](https://github.com/diario-enxaqueca/backend/blob/main/source/episodio/teste_episodio.py).
+* Definição da arquitetura do frontend:
+  * React.js + TypeScript
+* Uso do Lint - repositório backend em [pyproject.toml]()
+* Documentação clara:
+  * [Guia de estilo](./docs/guia-de-estilo.md) com nome do projeto, logo, paleta de cores e ícones.
   * [Protótipo](./docs/prototipo.md) de alta fidelidade no Figma
   * Definição do [MVP](./docs/mvp.md)
   * [Backlog](./docs/backlog.md) com no mínimo 10 histórias de usuário
   * [Regras de negócio](./docs/regras-de-negocio.md) documentadas
   * Diagramas UML: [Diagrama de classes](./docs/diagrama-classes.md) e [Diagrama de sequência](./docs/diagrama-sequencia.md) (extra)
 
-
-
-## Estrutura da Documentação
-
-```code
-documentacao/
-│
-├── assets
-│   ├── historias_usuario/   # Detalhes de cada história de usuário
-├── assets
-├── regras_negocio/      # Documento com regras de negócio e validações
-├── uml/                 # Diagramas UML
-├── prototipo_figma/     # Links, capturas de tela e documentação do protótipo
-├── relatorios/          # Relatórios de entregas e acompanhamento
-├── CONTRIBUITNG.md
-├── LICENSE
-└── README.md
-```
 
 ## Contribuição
 
@@ -58,4 +56,4 @@ Obrigado por ajudar a manter a documentação do Diário de Enxaqueca clara e co
 
 ## Licença
 
-MIT License © [ZenildaVieira]
+[MIT License](./LICENSE) © [ZenildaVieira]

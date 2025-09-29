@@ -16,7 +16,7 @@ O protótipo interativo está disponível no Figma no link abaixo:
 
 Para referência offline, disponibilizamos também uma cópia do protótipo em formato PDF:  
 
-[Baixar protótipo em PDF](./assets/prototipo.pdf)
+[Abrir protótipo em PDF](./assets/prototipo.pdf)
 
 ---
 

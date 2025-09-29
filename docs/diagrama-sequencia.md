@@ -6,7 +6,7 @@ Este documento apresenta o **diagrama de sequência** do fluxo **Registrar epis�
 
 ## Diagrama (ASCII)
 
-![Diagrama de Sequência](../assets/diagrama-sequencia-criar-episodio.png)
+![Diagrama de Sequência](../docs/assets/diagrama-sequencia-criar-episodio.png)
 
 ---
 
