@@ -13,8 +13,11 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
 ## Estrutura
 
 /assets → logos, ícones, paleta de cores
+
 /docs → guia de estilo, backlog, regras de negócio, MVP
+
 /uml → diagramas UML (classes e sequência)
+
 /figma → protótipo de alta fidelidade
 
 ---
