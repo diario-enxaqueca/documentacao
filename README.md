@@ -10,7 +10,7 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
 
 ---
 
-## 📑 Estrutura
+## Estrutura
 
 /assets → logos, ícones, paleta de cores
 /docs → guia de estilo, backlog, regras de negócio, MVP
