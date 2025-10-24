@@ -1,0 +1,74 @@
+@startuml Sequencia_Login_Usuario
+
+skinparam backgroundColor #FEFEFE
+skinparam sequence {
+    ArrowColor #27AE60
+    ActorBorderColor #27AE60
+    LifeLineBorderColor #27AE60
+    ParticipantBorderColor #27AE60
+    ParticipantBackgroundColor #D5F4E6
+}
+
+actor Usuario as user
+participant "Frontend\n(React)" as frontend
+participant "API\n(FastAPI)" as api
+participant "Controller\nAutenticacao" as auth_controller
+participant "Model\nUsuario" as user_model
+participant "JWT Service" as jwt
+database "MySQL\nDatabase" as db
+
+== Login de Usuário ==
+
+user -> frontend: Insere email e senha
+activate frontend
+
+frontend -> api: POST /auth/login\n{email, senha}
+activate api
+
+api -> auth_controller: login(email, senha)
+activate auth_controller
+
+auth_controller -> user_model: buscar_por_email(email)
+activate user_model
+
+user_model -> db: SELECT * FROM usuarios\nWHERE email = ?
+activate db
+db --> user_model: usuario | None
+deactivate db
+
+alt Usuário não encontrado
+    user_model --> auth_controller: None
+    auth_controller --> api: 401 Unauthorized
+    api --> frontend: "Credenciais inválidas"
+    frontend --> user: "Email ou senha incorretos"
+end
+
+user_model --> auth_controller: usuario
+deactivate user_model
+
+auth_controller -> auth_controller: Verifica senha\nbcrypt.verify(senha, usuario.senha_hash)
+
+alt Senha incorreta
+    auth_controller --> api: 401 Unauthorized
+    api --> frontend: "Credenciais inválidas"
+    frontend --> user: "Email ou senha incorretos"
+end
+
+auth_controller -> jwt: gerar_token(usuario.id, usuario.email)
+activate jwt
+jwt -> jwt: Cria JWT\n(payload + secret + expiration 24h)
+jwt --> auth_controller: token
+deactivate jwt
+
+auth_controller --> api: 200 OK\n{access_token, token_type}
+deactivate auth_controller
+
+api --> frontend: 200 OK\n{access_token, token_type}
+deactivate api
+
+frontend -> frontend: Armazena token\nno localStorage
+frontend -> frontend: Redireciona para\nDashboard
+frontend --> user: "Login realizado!"
+deactivate frontend
+
+@enduml
