@@ -1,46 +1,89 @@
-# MVP – Projeto Completo do Diário de Enxaqueca
+# 🎯 MVP — Diário de Enxaqueca
 
-### MVP do Projeto Completo
+## Objetivo
+Fornecer uma aplicação web funcional que permita usuários **registrar, acompanhar e analisar episódios de enxaqueca**, identificando padrões de intensidade, gatilhos e eficácia de medicações.
 
-**Recurso principal:** **Entrada de Enxaqueca**
+---
 
-#### Funcionalidades
+## Escopo do MVP
 
-1. **CRUD de Entradas de Enxaqueca**
+### Must Have (Essencial para primeira versão)
 
-   * Criar, listar, visualizar, editar e deletar episódios de enxaqueca
-   * Campos:
+#### 1. Gestão de Usuários
+- ✅ Cadastro de novos usuários
+- ✅ Login e autenticação JWT
+- ✅ Visualização de perfil
+- ✅ Atualização de perfil (Should Have)
+- ✅ Exclusão de conta (Could Have)
 
-     * `data` (data do episódio)
-     * `intensidade` (0 a 10)
-     * `gatilhos` (lista de gatilhos)
-     * `medicacoes` (lista de medicações usadas)
-     * `observacoes` (campo de texto livre)
+#### 2. Gestão de Episódios de Enxaqueca
+- ✅ Criar episódios (data, intensidade, duração, observações)
+- ✅ Listar episódios do usuário
+- ✅ Visualizar detalhes completos
+- ✅ Editar episódios
+- ✅ Excluir episódios
 
-2. **Gestão de Usuários**
+#### 3. Gestão de Gatilhos
+- ✅ Cadastrar gatilhos personalizados
+- ✅ Listar, editar e excluir gatilhos
+- ✅ Associar gatilhos aos episódios
 
-   * CRUD de usuários: criar, listar, editar, deletar
-   * Campos: `nome`, `email`, `senha`
-   * Validações: e-mail único, senha segura
+#### 4. Gestão de Medicações
+- ✅ Cadastrar medicações
+- ✅ Listar, editar e excluir medicações
+- ✅ Associar medicações aos episódios
 
-3. **Dashboard de Estatísticas**
+#### 5. Dashboard de Estatísticas
+- ✅ Intensidade média dos episódios
+- ✅ Total de episódios no mês
+- ✅ Gráfico de episódios por mês (últimos 6 meses)
+- ✅ Top 5 gatilhos mais frequentes
 
-   * Gráficos: intensidade média, episódios por mês, gatilhos mais comuns
-   * Filtros por período e intensidade
+---
 
-4. **Busca e Filtragem de Registros**
+## Características Técnicas
 
-   * Pesquisar por data, intensidade ou gatilho
+### Backend
+- Python 3.10+ com FastAPI
+- SQLAlchemy ORM
+- MySQL dockerizado
+- Arquitetura MVC
+- Testes automatizados (pytest)
+- Autenticação JWT
 
-5. **Configurações do Usuário**
+### Frontend
+- React.js + TypeScript
+- Design responsivo
+- Integração com API REST
+- Componentes reutilizáveis
 
-   * Atualização de dados pessoais e preferências
-   * Alteração de senha
+### Infraestrutura
+- Docker e Docker Compose
+- CI/CD com GitHub Actions
+- Documentação Swagger
 
-#### Observações
+---
 
-* Backend MVC, frontend estruturado em páginas/componentes.
-* Banco de dados MySQL, dockerizado, com SQLAlchemy.
-* Autenticação JWT para usuários (somente quando implementado).
-* Documentação completa, protótipo Figma e testes integrados.
+## Funcionalidades Futuras (Pós-MVP)
 
+### Should Have
+- Filtros avançados (intensidade, data, gatilho)
+- Busca textual em observações
+- Exportação de relatórios PDF
+
+### Could Have
+- Notificações e lembretes
+- Calendário visual de episódios
+- Análise preditiva com ML
+- Modo offline (PWA)
+- Compartilhamento de relatórios com médicos
+
+---
+
+## Critérios de Sucesso
+
+- ✅ Usuário consegue registrar episódio em < 2 minutos
+- ✅ Dashboard carrega em < 3 segundos
+- ✅ Sistema suporta 100+ episódios por usuário
+- ✅ Taxa de erro < 1%
+- ✅ Cobertura de testes > 80%
