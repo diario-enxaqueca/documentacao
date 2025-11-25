@@ -19,7 +19,7 @@ O script define as seguintes tabelas:
 
 Abaixo está a representação visual do DDL:
 
-![Esquema físico do banco de dados](../assets/DLD.PNG)
+![Esquema físico do banco de dados](../assets/modelo-fisico.png)
 
 > **Observação:**  
 > - Cada **usuário** pode ter vários **episódios**.  
