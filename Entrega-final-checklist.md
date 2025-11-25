@@ -50,8 +50,8 @@
   * [repositório backend](https://github.com/diario-enxaqueca/backend/tree/main)
   
 * Lint ou derivados - 
-  * [lint service - docker-compose.yml](./docker-compose.yml)
-  * [lint log](./logs/)
+  * [lint service - docker-compose.yml](./docker-compose.yml#L101)
+  * [lint log](./logs/lint.log)
 
 # Ponto de Controle 3
 
