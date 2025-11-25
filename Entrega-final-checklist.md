@@ -12,10 +12,10 @@
 # Ponto de Controle 2
 
 * Arquitetura
-  * [README.md/Arquitetura](https://github.com/diario-enxaqueca/documentacao/blob/main/README.md#-arquitetura-do-projeto)  
+  * [README.md/Arquitetura](https://github.com/diario-enxaqueca/documentacao/blob/main/README.md#arquitetura-do-projeto)  
   
 * Clean Code
-  * [README.md/Estrutura do Projeto](https://github.com/diario-enxaqueca/documentacao/blob/main/README.md#-estrutura-do-projeto)
+  * [README.md/Estrutura do Projeto](https://github.com/diario-enxaqueca/documentacao/blob/main/README.md#estrutura-do-projeto)
 
 * Testes Parametrizados
   * Backend
