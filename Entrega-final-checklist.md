@@ -19,13 +19,13 @@
 
 * Testes Parametrizados
   * Backend
-    * [backend/conftest.py](../backend/conftest.py)
+    * [backend/conftest.py](https://github.com/diario-enxaqueca/backend/blob/main/conftest.py)
     * [backend/source/episodio/test_episodio.py](https://github.com/diario-enxaqueca/backend/blob/main/source/episodio/test_episodio.py)
     * [backend/source/gatilho/test_gatilho.py](https://github.com/diario-enxaqueca/backend/blob/main/source/gatilho/test_gatilho.py)
     * [backend/source/medicacao/test_medicacao.py](https://github.com/diario-enxaqueca/backend/blob/main/source/medicacao/test_medicacao.py)
     * [backend/source/usuario/test_usuario.py](https://github.com/diario-enxaqueca/backend/blob/main/source/usuario/test_usuario.py)
   * Autenticação
-    * [autenticacao/conftest.py](../autenticacao/conftest.py)
+    * [autenticacao/conftest.py](https://github.com/diario-enxaqueca/autenticacao/blob/main/conftest.py)
     * [autenticacao/auth/test_auth.py](https://github.com/diario-enxaqueca/autenticacao/blob/main/auth/test_auth.py)
   
 * Testes de Integração
