@@ -8,7 +8,7 @@ O protótipo do **Diário de Enxaqueca** foi desenvolvido para validar a experi�
 
 O protótipo interativo está disponível no Figma no link abaixo:  
 
-[Abrir protótipo no Figma](https://www.figma.com/design/xoJ8FdBxirWbwV4XJlN4at/Di%C3%A1rio-de-enxaqueca?node-id=4-98&t=dGFHW5tJmNiVQfDV-1)
+[Abrir protótipo no Figma]([https://www.figma.com/design/xoJ8FdBxirWbwV4XJlN4at/Di%C3%A1rio-de-enxaqueca?node-id=4-98&t=dGFHW5tJmNiVQfDV-1](https://www.figma.com/make/1DMxk1tsucSCuyq63F3Pg2/Di%C3%A1rio-de-Enxaqueca-App?t=DMYAEcPgvblvYhKf-0))
 
 ---
 
