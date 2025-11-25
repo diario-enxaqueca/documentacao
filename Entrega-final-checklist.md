@@ -40,14 +40,14 @@
     * [autenticacao/auth/test_integration_auth.py](https://github.com/diario-enxaqueca/autenticacao/blob/main/auth/test_integration_auth.py)
 
 * Banco de Dados
-  * [backend/mysql-init/init.sql](https://github.com/diario-enxaqueca/backend/tree/main/mysql-init)
+  * [backend/mysql-init/init.sql](https://github.com/diario-enxaqueca/backend/tree/main/mysql-init/init.sql)
   
 * Modelo Físico do Banco
   * [Diagrama lógico](./docs/diagrama-logico.md)
   
 * API em repositório separado
-  * [autenticacao/]([repositório autenticacao/](https://github.com/diario-enxaqueca/documentacao/tree/main)), 
-  * [backend/]([repositório backend/](https://github.com/diario-enxaqueca/documentacao/tree/main))
+  * [repositório autenticacao](https://github.com/diario-enxaqueca/autenticacao/tree/main) 
+  * [repositório backend](https://github.com/diario-enxaqueca/backend/tree/main)
   
 * Lint ou derivados - 
   * [lint service - docker-compose.yml](./docker-compose.yml)
@@ -56,10 +56,10 @@
 # Ponto de Controle 3
 
 * Front completo
-  * [frontend/]([repositório frontend/](https://github.com/diario-enxaqueca/frontend/tree/main))
+  * [repositório frontend](https://github.com/diario-enxaqueca/frontend/tree/main)
 
 * Hospedagem
-  * [Diário de enxaqueca](frontend-production-7dfd.up.railway.app)
+  * [Diário de enxaqueca](https://frontend-production-7dfd.up.railway.app)
   
 * Testes automatizados com selenium ou afins - 
   * [frontend/tests-selenium/test_diariodeenxaquecaCRUDepisodio.py](https://github.com/diario-enxaqueca/frontend/blob/main/tests-selenium/test_diariodeenxaquecaCRUDepisodio.py)
