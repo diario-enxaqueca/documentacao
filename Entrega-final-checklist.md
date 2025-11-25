@@ -51,7 +51,7 @@
   
 * Lint ou derivados - 
   * [lint service - docker-compose.yml](./docker-compose.yml#L101)
-  * [lint log](./logs/lint.log)
+  * [lint log](./registro-logs/lint.log)
 
 # Ponto de Controle 3
 
