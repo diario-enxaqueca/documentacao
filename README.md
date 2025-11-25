@@ -10,7 +10,20 @@ Este repositório organiza todas as informações do projeto, incluindo MVP, bac
 O projeto Diário de Enxaqueca é uma aplicação CRUD completa para registro e acompanhamento de episódios de enxaqueca.
 O objetivo da documentação é organizar e detalhar todas as fases do projeto, garantindo rastreabilidade, clareza de requisitos e suporte para desenvolvimento backend e frontend.
 
-## 📁 Estrutura do Projeto
+## Arquitetura do Projeto
+
+O projeto é composto por 4 componentes principais, orquestrados via Docker Compose:
+
+- **Backend** (`backend/`): API REST desenvolvida com FastAPI (Python), utilizando SQLAlchemy como ORM e MySQL como banco de dados. As rotas são registradas em `backend/main.py` sob o prefixo `/api/*`.
+- **Autenticação** (`autenticacao/`): Serviço separado de autenticação JWT, construído com FastAPI. Atualmente, o `docker-compose.yml` refere-se a um serviço `auth` com build `./auth`, mas o diretório `./auth` não existe — recomenda-se ajustar para `./autenticacao`.
+- **Frontend** (`frontend/`): Interface de usuário desenvolvida com React + Vite. O `package.json` define scripts `dev` e `build`. Não possui Dockerfile atualmente, sugerindo a criação de um para containerização (ex.: multi-stage build com nginx).
+- **Banco de Dados**: MySQL dockerizado via `docker-compose.yml` (serviço `db`), com healthcheck configurado.
+
+### Pontos Críticos
+- O serviço de autenticação no `docker-compose.yml` aponta para `./auth`, mas o diretório correto é `./autenticacao`. Ajuste necessário.
+- O frontend não tem Dockerfile; considere adicionar um para consistência com os outros serviços.
+
+## Estrutura do Projeto
 
 ```
 ├───autenticacao            # Serviço de autenticação
@@ -42,7 +55,7 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
 
 /docs → guia de estilo, backlog, regras de negócio, MVP, protótipo de alta fidelidade, diagrama lógico
 
-## 🚀 Deploy no Railway
+## Deploy no Railway
 
 ### Pré-requisitos
 - Conta no [Railway](https://railway.app)
@@ -116,10 +129,6 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
    ```
    VITE_BACKEND_URL="https://backend-production-f9d7.up.railway.app/api"
    VITE_AUTH_URL="https://autenticacao-production-00f7.up.railway.app/api/auth"
-   BACKEND_HOST="https://backend-production-f9d7.up.railway.app"
-   AUTH_HOST="https://autenticacao-production-00f7.up.railway.app"
-   BACKEND_URL="https://backend-production-f9d7.up.railway.app"
-   AUTH_URL="https://autenticacao-production-00f7.up.railway.app"
    ```
 
 3. **Configurar domínio (opcional)**
@@ -133,7 +142,7 @@ O objetivo da documentação é organizar e detalhar todas as fases do projeto, 
      - Backend: https://backend-production-f9d7.up.railway.app
      - Auth: https://autenticacao-production-00f7.up.railway.app
 
-## 🐳 Desenvolvimento Local
+## Desenvolvimento Local
 
 ### Pré-requisitos
 - Docker e Docker Compose
@@ -163,7 +172,7 @@ docker compose logs -f
 - Auth Service: http://localhost:8001
 - Database: localhost:3306
 
-## 🔧 Configuração de Ambiente
+## Configuração de Ambiente
 
 ### Produção vs Desenvolvimento
 
@@ -177,7 +186,7 @@ docker compose logs -f
 - `.env.local` - Exemplo para desenvolvimento
 - `.env.prod` - Configurações de produção
 
-## 🧪 Testes
+## Testes
 
 ```bash
 # Testes do backend
@@ -190,10 +199,10 @@ docker compose run --rm tests-auth
 docker compose run --rm lint
 ```
 
-## 📚 Documentação do Projeto
+## Documentação do Projeto
 
 Consulte a pasta `documentacao/` para:
-- Diagramas UML
+- Diagrama UML
 - Documentação da API
 - Guias de usuário
 
@@ -218,7 +227,7 @@ Consulte a pasta `documentacao/` para:
 - Diagramas feitos com **Draw.io**.
 - Protótipos criados com **Figma**.
 
-## 🤝 Contribuição
+## Contribuição
 
 Contribuições são bem-vindas! Para manter consistência e qualidade na documentação, siga as instruções detalhadas no arquivo [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -231,7 +240,7 @@ Ele inclui orientações sobre:
 
 Obrigado por ajudar a manter a documentação do Diário de Enxaqueca clara e completa!
 
-## 📝 Licença
+## Licença
 
 Este projeto está sob a licença MIT.
 
