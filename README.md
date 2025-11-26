@@ -1,247 +1,343 @@
-# Diário de Enxaqueca
+# Diário de Enxaqueca - Documentação
 
-Sistema de gerenciamento de crises de enxaqueca com backend FastAPI, autenticação JWT e frontend React.
+Repositório de documentação do projeto **Diário de Enxaqueca**, desenvolvido na disciplina Técnicas de Programação em Plataformas Emergentes (TPPE) da FGA/UnB.
 
-Repositório de documentação do projeto Diário de Enxaqueca, desenvolvido na disciplina Técnicas de Programação em Plataformas Emergentes / Engenharia de Software – UNB Gama.
-Este repositório organiza todas as informações do projeto, incluindo MVP, backlog, regras de negócio, diagramas UML, protótipo Figma e relatórios de entrega.
+Este repositório organiza todas as informações do projeto, incluindo MVP, backlog, regras de negócio, diagramas UML, protótipo Figma e guias de desenvolvimento, garantindo rastreabilidade e suporte para desenvolvimento.
+
+## Índice
+
+- [Visão Geral](#visão-geral)
+- [Arquitetura do Projeto](#arquitetura-do-projeto)
+- [Estrutura da Documentação](#estrutura-da-documentação)
+- [Conteúdo Disponível](#conteúdo-disponível)
+- [Deploy em Produção](#deploy-em-produção)
+- [Desenvolvimento Local](#desenvolvimento-local)
+- [Links do Projeto](#links-do-projeto)
+- [Boas Práticas](#boas-práticas)
+- [Contribuição](#contribuição)
 
 ## Visão Geral
 
-O projeto Diário de Enxaqueca é uma aplicação CRUD completa para registro e acompanhamento de episódios de enxaqueca.
-O objetivo da documentação é organizar e detalhar todas as fases do projeto, garantindo rastreabilidade, clareza de requisitos e suporte para desenvolvimento backend e frontend.
+O projeto Diário de Enxaqueca é uma aplicação completa para registro e acompanhamento de episódios de enxaqueca, desenvolvida com arquitetura **MVC modular** preparada para futura migração para microsserviços.
+
+**Objetivo da documentação:**
+- Organizar e detalhar todas as fases do projeto
+- Garantir rastreabilidade de requisitos
+- Fornecer guias de desenvolvimento e deploy
+- Documentar decisões arquiteturais e de design
+- Facilitar onboarding de novos contribuidores
 
 ## Arquitetura do Projeto
 
-O projeto é composto por 4 componentes principais, orquestrados via Docker Compose:
+O projeto utiliza **arquitetura MVC (Model-View-Controller)** modular, com estrutura de pastas preparada para futura migração para microsserviços. Cada módulo possui separação clara de responsabilidades seguindo o padrão MVC.
 
-- **Backend** (`backend/`): API REST desenvolvida com FastAPI (Python), utilizando SQLAlchemy como ORM e MySQL como banco de dados. As rotas são registradas em `backend/main.py` sob o prefixo `/api/*`.
-- **Autenticação** (`autenticacao/`): Serviço separado de autenticação JWT, construído com FastAPI. Atualmente, o `docker-compose.yml` refere-se a um serviço `auth` com build `./auth`, mas o diretório `./auth` não existe — recomenda-se ajustar para `./autenticacao`.
-- **Frontend** (`frontend/`): Interface de usuário desenvolvida com React + Vite. O `package.json` define scripts `dev` e `build`. Não possui Dockerfile atualmente, sugerindo a criação de um para containerização (ex.: multi-stage build com nginx).
-- **Banco de Dados**: MySQL dockerizado via `docker-compose.yml` (serviço `db`), com healthcheck configurado.
-
-### Pontos Críticos
-- O serviço de autenticação no `docker-compose.yml` aponta para `./auth`, mas o diretório correto é `./autenticacao`. Ajuste necessário.
-- O frontend não tem Dockerfile; considere adicionar um para consistência com os outros serviços.
-
-## Estrutura do Projeto
+### Componentes
 
 ```
-├───autenticacao            # Serviço de autenticação
-│   ├───auth
-│   └───config
-├───backend                 # API FastAPI
-│   ├───config
-│   ├───mysql-init
-│   └───source
-│       ├───episodio
-│       ├───gatilho
-│       ├───medicacao
-│       └───usuario
-├───documentacao            # Documentação
-│   ├───assets
-│   ├───docs
-│   ├───logs
-│   └───scripts
-└───frontend                # Interface React/Vite
-    ├───build
-    ├───node_modules
-    ├───src
-    └───tests-selenium
+┌─────────────┐      ┌──────────────┐      ┌─────────────┐
+│   Frontend  │─────▶│   Backend    │─────▶│    MySQL    │
+│  (React)    │      │   MVC API    │      │  Database   │
+└─────────────┘      └──────────────┘      └─────────────┘
+                            │
+                            ▼
+                     ┌──────────────┐
+                     │     Auth     │
+                     │   Module     │
+                     └──────────────┘
 ```
 
-### Estrutura da Documentação
+- **Frontend** (`frontend/`): Interface React + Vite + TypeScript + Tailwind CSS
+- **Backend** (`backend/`): API REST com FastAPI + SQLAlchemy + MySQL
+  - Módulos MVC: episodio, gatilho, medicacao, usuario
+- **Autenticação** (`autenticacao/`): Módulo separado de autenticação JWT
+- **Banco de Dados**: MySQL 8 dockerizado com healthcheck
 
-/assets → logos, ícones, paleta de cores
+### Tecnologias
 
-/docs → guia de estilo, backlog, regras de negócio, MVP, protótipo de alta fidelidade, diagrama lógico
+**Backend:**
+- Python 3.11.14, FastAPI, SQLAlchemy, Pydantic V2
+- pytest (cobertura 95%), Pylint (nota 8.91/10)
 
-## Deploy no Railway
+**Frontend:**
+- React 18, Vite, TypeScript, Tailwind CSS
+- Selenium (testes E2E)
 
-### Pré-requisitos
-- Conta no [Railway](https://railway.app)
-- Projeto GitHub conectado
+**Infraestrutura:**
+- Docker & Docker Compose
+- MySQL 8
+- Nginx (frontend em produção)
+
+## Estrutura da Documentação
+
+```
+documentacao/
+├── docs/                    # Documentos do projeto
+│   ├── backlog.md          # Histórias de usuário
+│   ├── mvp.md              # Definição do MVP
+│   ├── regras-de-negocio.md # Regras funcionais
+│   ├── guia-de-estilo.md   # Identidade visual
+│   ├── prototipo.md        # Link e descrição do Figma
+│   ├── ddl.sql             # DDL do banco de dados
+│   ├── modelo-fisico.md    # Modelo físico do banco
+│   └── ...                 # Outros documentos
+├── assets/                  # Recursos visuais
+│   ├── logos/              # Logo do projeto
+│   ├── paleta-cores/       # Paleta de cores
+│   └── icones/             # Ícones da aplicação
+├── CONTRIBUTING.md          # Guia de contribuição
+├── LICENSE                  # Licença MIT
+└── README.md               # Este arquivo
+```
+
+## Conteúdo Disponível
+
+### Design e UX
+
+- **[Guia de Estilo](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/guia-de-estilo.md):** Identidade visual completa (logo, paleta de cores, tipografia, iconografia)
+- **[Protótipo Figma](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/prototipo.md):** Design de alta fidelidade das interfaces
+  - Link: [Figma - Diário de Enxaqueca App](https://www.figma.com/design/1DMxk1tsucSCuyq63F3Pg2/Di%C3%A1rio-de-Enxaqueca-App)
+
+### Planejamento
+
+- **[MVP](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/mvp.md):** Definição do Produto Mínimo Viável
+- **[Backlog](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/backlog.md):** Histórias de usuário (mínimo de 10)
+- **[Regras de Negócio](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/regras-de-negocio.md):** Descrição funcional do sistema
+
+### Banco de Dados
+
+- **[DDL](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/ddl.sql):** Script de criação do banco de dados
+- **[Modelo Físico](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/docs/modelo-fisico.md):** Documentação da estrutura do banco
+
+### Guias de Desenvolvimento
+
+- **README principal:** [README.md](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/README.md) - Visão geral e setup do projeto
+- **Backend:** [backend/README.md](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/backend/README.md) - Documentação da API
+- **Frontend:** [frontend/README.md](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/frontend/README.md) - Documentação da interface
+- **Autenticação:** [autenticacao/README.md](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/autenticacao/README.md) - Documentação do módulo auth
+
+## Deploy em Produção
+
+### Banco de Dados Aiven
+
+O projeto utiliza MySQL gerenciado no Aiven Cloud para produção:
+
+```env
+MYSQL_HOST=mysql-2e80f044-diario-de-enxaqueca.k.aivencloud.com
+MYSQL_PORT=24445
+MYSQL_USER=avnadmin
+MYSQL_PASSWORD=********
+MYSQL_DB=defaultdb
+MYSQL_SSL=True
+MYSQL_SSL_CA=/app/ca.pem
+```
+
+**Características:**
+- Banco compartilhado entre backend e autenticação
+- SSL/TLS obrigatório (certificado ca.pem)
+- Backup automático
+- Monitoramento 24/7
+
+### Railway (Recomendado)
+
+O projeto está configurado para deploy no Railway com os seguintes serviços:
+
+#### 1. Backend Service
+
+```env
+MYSQL_HOST=mysql-2e80f044-diario-de-enxaqueca.k.aivencloud.com
+MYSQL_PORT=24445
+MYSQL_USER=avnadmin
+MYSQL_PASSWORD=********
+MYSQL_DB=defaultdb
+MYSQL_SSL=True
+MYSQL_SSL_CA=/app/ca.pem
+SECRET_KEY=production-secret-key
+ENVIRONMENT=production
+DEBUG=false
+```
+
+**URL:** https://backend-production-f9d7.up.railway.app
+
+#### 2. Auth Service
+
+```env
+MYSQL_HOST=mysql-2e80f044-diario-de-enxaqueca.k.aivencloud.com
+MYSQL_PORT=24445
+MYSQL_USER=avnadmin
+MYSQL_PASSWORD=********
+MYSQL_DB=defaultdb
+MYSQL_SSL=True
+MYSQL_SSL_CA=/app/ca.pem
+SECRET_KEY=production-secret-key
+SECRET_KEY=production-secret-key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=1440
+ENVIRONMENT=production
+```
+
+**URL:** https://autenticacao-production-00f7.up.railway.app
+
+#### 3. Frontend Service
+
+```env
+VITE_BACKEND_URL=https://backend-production-f9d7.up.railway.app/api
+VITE_AUTH_URL=https://autenticacao-production-00f7.up.railway.app/api/auth
+```
+
+**URL:** https://frontend-production-7dfd.up.railway.app
 
 ### Passos para Deploy
 
-1. **Criar projeto no Railway**
-   - Conecte seu repositório GitHub
+1. **Conectar Repositório GitHub ao Railway**
+   - Criar conta no [Railway](https://railway.app)
+   - Conectar repositório GitHub
    - Railway detectará automaticamente os serviços
 
-2. **Configurar variáveis de ambiente**
+2. **Configurar Variáveis de Ambiente**
+   - Configurar cada serviço conforme exemplos acima
+   - Garantir que SECRET_KEY seja forte e única
 
-   Para cada serviço, configure as seguintes variáveis:
+3. **Configurar Domínio (Opcional)**
+   - Settings > Domains
+   - Adicionar domínio customizado
 
-   #### Auth Service (Autenticação):
-   ```
-   MYSQL_ROOT_PASSWORD="ignore"
-   MYSQL_USER="user"
-   MYSQL_PASSWORD="senha"
-   MYSQL_DB="defaultdb"
-   MYSQL_HOST="mysql-2e80f044-diario-de-enxaqueca.k.aivencloud.com"
-   MYSQL_PORT="24445"
-   MYSQL_USE_SSL="True"
-   MYSQL_SSL_CA="/app/ca.pem"
-   SECRET_KEY="senha"
-   ALGORITHM="HS256"
-   ACCESS_TOKEN_EXPIRE_MINUTES="1440"
-   APP_HOST="0.0.0.0"
-   APP_PORT="8000"
-   AUTH_PORT="8001"
-   ENVIRONMENT="production"
-   DEBUG="False"
-   MAIL_USERNAME="email@mail.com"
-   MAIL_PASSWORD="senha"
-   MAIL_FROM="email@mail.com"
-   MAIL_PORT="587"
-   MAIL_SERVER="smtp.mail.com"
-   MAIL_STARTTLS="True"
-   MAIL_SSL_TLS="False"
-   ```
-
-   #### Backend Service:
-   ```
-   MYSQL_ROOT_PASSWORD="ignore"
-   MYSQL_USER="user"
-   MYSQL_PASSWORD="senha"
-   MYSQL_DB="defaultdb"
-   MYSQL_HOST="mysql-2e80f044-diario-de-enxaqueca.k.aivencloud.com"
-   MYSQL_PORT="24445"
-   MYSQL_USE_SSL="True"
-   MYSQL_SSL_CA="/app/ca.pem"
-   SECRET_KEY="senha"
-   ALGORITHM="HS256"
-   ACCESS_TOKEN_EXPIRE_MINUTES="1440"
-   APP_HOST="0.0.0.0"
-   APP_PORT="8000"
-   AUTH_PORT="8001"
-   ENVIRONMENT="production"
-   DEBUG="False"
-   MAIL_USERNAME="email@mail.com"
-   MAIL_PASSWORD="senha"
-   MAIL_FROM="email@mail.com"
-   MAIL_PORT="587"
-   MAIL_SERVER="smtp.mail.com"
-   MAIL_STARTTLS="True"
-   MAIL_SSL_TLS="False"
-   ```
-
-   #### Frontend Service:
-   ```
-   VITE_BACKEND_URL="https://backend-production-f9d7.up.railway.app/api"
-   VITE_AUTH_URL="https://autenticacao-production-00f7.up.railway.app/api/auth"
-   ```
-
-3. **Configurar domínio (opcional)**
-   - Vá para Settings > Domains
-   - Adicione seu domínio customizado
-
-4. **Verificar deploy**
-   - Acesse a URL do frontend: https://frontend-production-7dfd.up.railway.app
-   - Teste login/cadastro
-   - Verifique se as APIs estão respondendo:
-     - Backend: https://backend-production-f9d7.up.railway.app
-     - Auth: https://autenticacao-production-00f7.up.railway.app
+4. **Verificar Deploy**
+   - Acessar URLs dos serviços
+   - Testar login/cadastro
+   - Verificar conectividade entre serviços
 
 ## Desenvolvimento Local
 
 ### Pré-requisitos
-- Docker e Docker Compose
-- Node.js 18+ (para desenvolvimento frontend)
-- Python 3.11+ (para desenvolvimento backend)
 
-### Executar localmente
+- **Docker Desktop** (Windows/Mac) ou Docker Engine (Linux)
+- **Git** para clonar repositório
+- **Node.js 18+** (opcional, para desenvolvimento frontend)
+- **Python 3.11+** (opcional, para desenvolvimento backend)
+
+### Quick Start
 
 ```bash
 # Clonar repositório
-git clone <repository-url>
-cd diario-enxaqueca
+git clone https://github.com/diario-enxaqueca/desenvolvimento.git
+cd desenvolvimento
 
 # Subir todos os serviços
-docker compose up --build -d
+docker-compose up --build -d
 
 # Verificar status
-docker compose ps
+docker-compose ps
 
 # Ver logs
-docker compose logs -f
+docker-compose logs -f
 ```
 
-### Endpoints locais
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- Auth Service: http://localhost:8001
-- Database: localhost:3306
+### Endpoints Locais
 
-## Configuração de Ambiente
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8000
+- **Backend Docs:** http://localhost:8000/docs
+- **Auth Service:** http://localhost:8001
+- **Auth Docs:** http://localhost:8001/docs
+- **Database:** localhost:3306
 
-### Produção vs Desenvolvimento
+### Ambiente de Desenvolvimento vs Produção
 
 | Variável | Desenvolvimento | Produção |
 |----------|----------------|----------|
-| BACKEND_URL | http://backend:8000 | https://backend-production-f9d7.up.railway.app |
-| AUTH_URL | http://auth:8001 | https://autenticacao-production-00f7.up.railway.app |
+| MYSQL_HOST | db | mysql-2e80f044-diario-de-enxaqueca.k.aivencloud.com |
+| MYSQL_PORT | 3306 | 24445 |
+| MYSQL_SSL | false | True |
+| BACKEND_URL | http://localhost:8000 | https://backend-production.railway.app |
+| DEBUG | true | false |
 
+### Scripts de Automação
 
-### Arquivos de Configuração
-- `.env.local` - Exemplo para desenvolvimento
-- `.env.prod` - Configurações de produção
+O projeto inclui scripts PowerShell para facilitar operações:
 
-## Testes
+```powershell
+# Capturar logs de todos os serviços
+.\scripts\capture-logs.ps1
 
-```bash
-# Testes do backend
-docker compose run --rm tests
+# Parar serviços
+.\scripts\stop-logs.ps1
 
-# Testes do auth
-docker compose run --rm tests-auth
-
-# Lint
-docker compose run --rm lint
+# Rebuild completo + todos os testes + logs
+.\scripts\stop-then-capture-logs-com-build-no-cache.ps1
 ```
 
-## Documentação do Projeto
+**Detalhes:** Consulte `/README.md` seção "Scripts de Automação"
 
-Consulte a pasta `documentacao/` para:
-- Diagrama UML
-- Documentação da API
-- Guias de usuário
+## Links do Projeto
 
-### Conteúdo da documentação
+### Repositórios
 
-- **[Guia de estilo](./docs/guia-de-estilo.md):** identidade visual (logo, paleta, tipografia, ícones)
-- **[Protótipo (Figma)](./docs/prototipo.md):** representação das interfaces conforme o MVP
-- **Definição do [MVP](./docs/mvp.md)**
-- **[Backlog](./docs/backlog.md):** lista de histórias de usuário (mínimo de 10)
-- **[Regras de negócio](./docs/regras-de-negocio.md):** descrição funcional do sistema
-- **Diagramas UML:** estrutura ([Diagrama de classes](./docs/diagrama-classes.md)) e comportamento ([Diagrama de sequência](./docs/diagrama-sequencia.md))
+- [Organização GitHub](https://github.com/diario-enxaqueca)
+- [Desenvolvimento (Monorepo)](https://github.com/diario-enxaqueca/desenvolvimento)
+- [Documentação](https://github.com/diario-enxaqueca/documentacao)
 
-## Links
+### Protótipo e Design
 
-- [Organização principal](https://github.com/diario-enxaqueca)
-- [Backend](https://github.com/diario-enxaqueca/backend)
-- [Frontend](https://github.com/diario-enxaqueca/frontend)
-- [Autenticação](https://github.com/diario-enxaqueca/autenticacao)
+- [Figma - Diário de Enxaqueca App](https://www.figma.com/design/1DMxk1tsucSCuyq63F3Pg2/Di%C3%A1rio-de-Enxaqueca-App)
+
+### Deploy em Produção
+
+- [Frontend](https://frontend-production-7dfd.up.railway.app)
+- [Backend](https://backend-production-f9d7.up.railway.app)
+- [Autenticação](https://autenticacao-production-00f7.up.railway.app)
 
 ## Boas Práticas
-- Toda a documentação segue a norma **ABNT NBR 6023:2020** para referências.
-- Diagramas feitos com **Draw.io**.
-- Protótipos criados com **Figma**.
+
+### Documentação
+
+- Toda documentação segue **ABNT NBR 6023:2020** para referências
+- Diagramas UML criados com **Draw.io**
+- Protótipos desenvolvidos no **Figma**
+- Markdown para documentos técnicos
+
+### Versionamento
+
+- Commits seguem **Conventional Commits**
+- Branches criadas a partir de `main`
+- Pull Requests com revisão obrigatória
+- Tags para releases importantes
+
+### Qualidade
+
+- Cobertura de testes: 95%
+- Pylint score: 8.91/10
+- Todos os PRs passam por testes automatizados
+- Documentação atualizada junto com código
 
 ## Contribuição
 
-Contribuições são bem-vindas! Para manter consistência e qualidade na documentação, siga as instruções detalhadas no arquivo [CONTRIBUTING.md](CONTRIBUTING.md).
+Contribuições são bem-vindas! Para manter consistência e qualidade:
 
-Ele inclui orientações sobre:
-* Clonar o repositório
-* Criar branch a partir da `main`
-* Padrão de commits (**Conventional Commits**)
-* Abrir Pull Requests com descrição clara
-* Boas práticas de **pastas**, **UML**, **backlog**, **regras de negócio** e **protótipo Figma**
+1. **Fork** o repositório
+2. **Clone** seu fork
+3. Crie uma **branch** (`git checkout -b feature/NovaDoc`)
+4. **Desenvolva** sua contribuição
+5. Siga os **padrões de documentação**
+6. **Commit** com mensagens claras (`docs: adiciona diagrama de atividades`)
+7. **Push** para sua branch
+8. Abra **Pull Request**
 
-Obrigado por ajudar a manter a documentação do Diário de Enxaqueca clara e completa!
+**Guia completo:** [CONTRIBUTING.md](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/CONTRIBUTING.md)
+
+### Padrões para Documentação
+
+- Usar Markdown para documentos técnicos
+- Incluir data de última atualização
+- Adicionar referências quando aplicável
+- Manter consistência de formatação
+- Atualizar índice ao adicionar seções
 
 ## Licença
 
 Este projeto está sob a licença MIT.
 
-[MIT License](./LICENSE) © [ZenildaVieira]
+[MIT License](https://github.com/diario-enxaqueca/desenvolvimento/blob/main/documentacao/LICENSE) © [ZenildaVieira](https://github.com/ZenildaVieira)
+
+---
+
+**Nota:** Este é um projeto acadêmico desenvolvido para fins educacionais na FGA/UnB.
